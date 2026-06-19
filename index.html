@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Pembelajaran Interaktif - Gunung Berapi (Fase E)</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #E0E0E0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* HEADER IDENTITAS */
+        header {
+            background-color: #1A1A1A;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #FF5722;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .header-title h1 {
+            font-size: 1.35rem;
+            color: #FFFFFF;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .header-title p {
+            font-size: 0.85rem;
+            color: #B3B3B3;
+            margin-top: 2px;
+        }
+
+        .header-meta {
+            text-align: right;
+            font-size: 0.85rem;
+            color: #B3B3B3;
+        }
+
+        .header-meta span {
+            color: #FF5722;
+            font-weight: bold;
+        }
+
+        /* UTAMA (SPLIT SCREEN 16:9) */
+        main {
+            display: flex;
+            flex: 1;
+            height: calc(100vh - 110px);
+            overflow: hidden;
+        }
+
+        /* SEPARUH KIRI: PANEL NAVIGASI & KONTEN */
+        .left-panel {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            border-right: 2px solid #1A1A1A;
+            background-color: #1E1E1E;
+        }
+
+        .nav-tabs {
+            display: flex;
+            background-color: #151515;
+            border-bottom: 1px solid #2A2A2A;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 15px 10px;
+            background: none;
+            border: none;
+            color: #888888;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab-btn:hover {
+            color: #FFFFFF;
+            background-color: #1A1A1A;
+        }
+
+        .tab-btn.active {
+            color: #FF5722;
+            border-bottom: 3px solid #FF5722;
+            background-color: #1E1E1E;
+        }
+
+        .content-container {
+            flex: 1;
+            padding: 25px;
+            overflow-y: auto;
+            line-height: 1.6;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Gaya Konten Teks */
+        h2 {
+            color: #FFFFFF;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            border-left: 4px solid #FF5722;
+            padding-left: 10px;
+        }
+
+        h3 {
+            color: #FFCC80;
+            font-size: 1.05rem;
+            margin: 20px 0 10px 0;
+        }
+
+        p, ul, ol {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            color: #D5D5D5;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .highlight {
+            color: #FF9100;
+            font-weight: 600;
+        }
+
+        /* FORMATIF KUIS JAVASCRIPT */
+        .quiz-container {
+            background-color: #1A1A1A;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #2A2A2A;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .question-box {
+            font-size: 1rem;
+            color: #FFFFFF;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .options-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .option-item {
+            background-color: #242424;
+            border: 1px solid #333333;
+            padding: 12px 15px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .option-item:hover {
+            border-color: #FF5722;
+            background-color: #2A2A2A;
+        }
+
+        .option-item.correct {
+            background-color: #1B5E20;
+            border-color: #4CAF50;
+            color: #E8F5E9;
+            font-weight: bold;
+        }
+
+        .option-item.wrong {
+            background-color: #B71C1C;
+            border-color: #F44336;
+            color: #FFEBEE;
+        }
+
+        .quiz-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #FF5722;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 4px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #FF7043;
+        }
+
+        .btn:disabled {
+            background-color: #444444;
+            color: #888888;
+            cursor: not-allowed;
+        }
+
+        /* SEPARUH KANAN: FULL EMBED 3D/AR */
+        .right-panel {
+            width: 50%;
+            height: 100%;
+            background-color: #000000;
+            position: relative;
+            border-left: 2px solid #FF5722;
+            box-shadow: -4px 0 15px rgba(255, 87, 34, 0.15);
+        }
+
+        .iframe-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #121212;
+            padding: 12px 20px;
+            font-size: 0.8rem;
+            color: #888888;
+            text-align: center;
+            border-top: 1px solid #1A1A1A;
+        }
+
+        /* Scrollbar Kostumisasi Kiri */
+        .content-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        .content-container::-webkit-scrollbar-track {
+            background: #1E1E1E;
+        }
+        .content-container::-webkit-scrollbar-thumb {
+            background: #333333;
+            border-radius: 3px;
+        }
+        .content-container::-webkit-scrollbar-thumb:hover {
+            background: #FF5722;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-title">
+            <h1>MEDIA PEMBELAJARAN INTERAKTIF: VULKANISME</h1>
+            <p>Materi Gunung Berapi - Geografi SMA Kelas X</p>
+        </div>
+        <div class="header-meta">
+            Fase: <span>E</span> &nbsp;|&nbsp; Penyusun: <span>NS_Afriadi - SMAN 2 Ciamis</span>
+        </div>
+    </header>
+
+    <main>
+        <!-- PANEL KIRI (NAVIGASI & KONTEN) -->
+        <div class="left-panel">
+            <nav class="nav-tabs">
+                <button class="tab-btn active" onclick="openTab('tujuan')">Tujuan Pembelajaran</button>
+                <button class="tab-btn" onclick="openTab('materi')">Uraian Materi</button>
+                <button class="tab-btn" onclick="openTab('evaluasi')">Soal Formatif</button>
+            </nav>
+
+            <div class="content-container">
+                <!-- TAB 1: TUJUAN -->
+                <div id="tujuan" class="tab-content active">
+                    <h2>Tujuan Pembelajaran</h2>
+                    <p>Melalui media interaktif ini, diharapkan peserta didik Fase E mampu:</p>
+                    <ol>
+                        <li>Memahami konsep dasar <span class="highlight">vulkanisme</span> serta karakteristik pergerakan magma dengan benar.</li>
+                        <li>Mengidentifikasi ciri khas dan membedakan 3 bentuk utama gunung berapi (<span class="highlight">Maar, Perisai, dan Strato</span>).</li>
+                        <li>Menganalisis dampak fenomena erupsi terhadap lingkungan sekitar.</li>
+                        <li>Menerapkan prinsip <span class="highlight">mitigasi bencana</span> (pra, saat, dan pasca-erupsi) demi keselamatan jiwa.</li>
+                    </ol>
+                    <div style="margin-top: 35px; border: 1px dashed #FF5722; padding: 15px; border-radius: 6px; background-color: rgba(255,87,34,0.05);">
+                        <p style="margin-bottom: 0; font-style: italic; color: #FFCC80; font-size: 0.85rem;">
+                            <strong>Petunjuk Interaksi:</strong> Gunakan panel simulasi di sebelah kanan untuk mengeksplorasi gunung api secara 3D/AR. Model dapat digeser, diputar, dan diperbesar untuk mengamati morfologinya secara nyata.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- TAB 2: MATERI -->
+                <div id="materi" class="tab-content">
+                    <h2>Uraian Materi: Gunung Berapi</h2>
+                    
+                    <h3>A. Pengertian Vulkanisme</h3>
+                    <p>Vulkanisme merupakan peristiwa naiknya magma dari dalam litosfer menuju ke permukaan bumi melalui celah, patahan, atau pipa kepundan (diatrema). Tenaga dorong ini dipicu oleh akumulasi gas bertekanan tinggi di dalam dapur magma.</p>
+                    
+                    <h3>B. Bentuk-Bentuk Gunung Berapi</h3>
+                    <p>Morfologi gunung api sangat ditentukan oleh kekentalan lava dan kekuatan letusannya:</p>
+                    <ul>
+                        <li><strong>1. Gunung Api Maar (Kawah):</strong> Terbentuk dari sebuah erupsi eksplosif tunggal yang sangat dahsyat, menyisakan lubang kawah besar yang sering kali terisi oleh air (danau kawah). Contoh: Danau Klakah di Lumajang.</li>
+                        <li><strong>2. Gunung Api Perisai (Shield):</strong> Terbentuk dari efusi lava yang sangat encer bertekanan rendah, menyebar luas hingga membentuk lereng sangat landai menyerupai tameng. Contoh: Gunung Mauna Loa di Hawaii.</li>
+                        <li><strong>3. Gunung Api Strato (Kerucut):</strong> Hasil kombinasi erupsi lelehan (efusif) dan ledakan (eksplosif) yang terjadi secara bergantian secara terus menerus, membentuk struktur berlapis-lapis. Mayoritas gunung api di Indonesia bertipe strato (seperti Merapi, Gede, dan Galunggung).</li>
+                    </ul>
+
+                    <h3>C. Langkah Mitigasi Bencana Erupsi</h3>
+                    <p>Langkah preventif wajib dipahami guna meminimalisir risiko jatuhnya korban:</p>
+                    <ul>
+                        <li><strong>Pra-Erupsi:</strong> Mematuhi sistem peringatan dini, mengamati status level aktivitas (Normal, Waspada, Siaga, Awas), serta menyiapkan tas evakuasi darurat.</li>
+                        <li><strong>Saat Erupsi:</strong> Menghindari kawasan radius bahaya, mengenakan masker/kacamata pelindung debu vulkanik, dan tidak berada di lembah sungai demi menghindari aliran lahar.</li>
+                        <li><strong>Pasca-Erupsi:</strong> Selalu membersihkan sisa abu di atap rumah agar struktur bangunan tidak roboh akibat beban material.</li>
+                    </ul>
+                </div>
+
+                <!-- TAB 3: EVALUASI (APLIKATIF) -->
+                <div id="evaluasi" class="tab-content">
+                    <h2>Evaluasi Formatif Mandiri</h2>
+                    <div class="quiz-container">
+                        <div id="quiz-body">
+                            <!-- Soal dinamis dimuat via JavaScript -->
+                        </div>
+                        <div class="quiz-nav">
+                            <span id="quiz-status" style="font-size: 0.9rem; color: #888888;">Menyiapkan kuis...</span>
+                            <button id="next-btn" class="btn" onclick="nextQuestion()">Selanjutnya</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANEL KANAN (FULL EMBED IFRAME ASSEMBLR) -->
+        <div class="right-panel">
+            <div class="iframe-container">
+                <iframe src="https://asblr.com/vrSMRH2" allowfullscreen allow="xr-spatial-tracking; gyroscope; accelerometer;"></iframe>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        Media Pembelajaran Geografi Fase E &copy; 2026 | Disusun oleh: NS_Afriadi - SMAN 2 Ciamis
+    </footer>
+
+    <script>
+        // Navigasi Tab Sistem
+        function openTab(tabId) {
+            const contents = document.querySelectorAll('.tab-content');
+            const tabs = document.querySelectorAll('.tab-btn');
+            
+            contents.forEach(content => content.classList.remove('active'));
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // Data 10 Soal Formatif Pilihan Ganda (A-E)
+        const questions = [
+            {
+                q: "Magma yang berhasil keluar dan mengalir di permukaan bumi disebut...",
+                options: ["Intrusi Magma", "Batolit", "Lahar", "Lava", "Eflata"],
+                correct: 3
+            },
+            {
+                q: "Gunung api yang bentuknya menyerupai perisai atau tameng dengan lereng yang sangat landai disebabkan oleh...",
+                options: ["Erupsi yang sangat eksplosif", "Lava yang dikeluarkan sangat encer dan tekanan gas rendah", "Campuran antara bahan eflata dan lelehan lava", "Penyumbatan pada pipa kepundan utama", "Dapur magma yang terletak sangat dalam"],
+                correct: 1
+            },
+            {
+                q: "Gunung berapi di Indonesia pada umumnya berbentuk kerucut berlapis-lapis yang terjadi karena erupsi efusif dan eksplosif secara bergantian. Bentuk gunung api ini disebut...",
+                options: ["Maar", "Perisai", "Strato", "Caldera", "Fumarol"],
+                correct: 2
+            },
+            {
+                q: "Material padat (eflata) hasil erupsi gunung berapi yang berukuran kecil seperti pasir atau debu vulkanik dinamakan...",
+                options: ["Lapili", "Bom", "Lapili dan Bom", "Ash / Debu Vulkanik", "Lahar dingin"],
+                correct: 3
+            },
+            {
+                q: "Berikut ini yang termasuk dalam gejala pascavulkanik (setelah gunung api tidak aktif/istirahat) adalah...",
+                options: ["Gempa bumi vulkanik yang terjadi terus-menerus", "Terdengarnya suara gemuruh dari dalam gunung", "Munculnya sumber air panas (geyser) dan solfatar", "Meningkatnya suhu di sekitar kawah utama", "Mengeringnya sumber mata air di lereng gunung"],
+                correct: 2
+            },
+            {
+                q: "Gas vulkanik berbahaya berupa gas belerang yang sering keluar dari celah-celah gunung berapi disebut...",
+                options: ["Solfatar", "Fumarol", "Mofet", "Nitrogen", "Karbon Monoksida"],
+                correct: 0
+            },
+            {
+                q: "Tindakan mitigasi yang paling tepat dilakukan saat berada di dalam rumah dan terjadi erupsi gunung berapi secara tiba-tiba adalah...",
+                options: ["Keluar rumah untuk melihat arah aliran lahar", "Menutup semua pintu, jendela, dan lubang ventilasi rumah rapat-rapat", "Mengungsi ke daerah pantai terdekat", "Memanjat ke atap rumah agar terhindar dari debu vulkanik", "Membuka jendela agar sirkulasi udara lancar"],
+                correct: 1
+            },
+            {
+                q: "Batuan beku yang terbentuk dari pembekuan magma yang lambat di dalam kulit bumi (intrusi) dinamakan batuan...",
+                options: ["Batuan beku luar", "Batuan sedimenter", "Batuan metamorf", "Batuan beku dalam (Plutonik)", "Batuan malihan"],
+                correct: 3
+            },
+            {
+                q: "Aliran material vulkanik yang terdiri dari batuan, kerikil, dan abu yang bercampur dengan air hujan di lereng gunung dinamakan...",
+                options: ["Lava encer", "Lahar dingin", "Wedhus gembel (Awan panas)", "Lapili", "Intrusi magma"],
+                correct: 1
+            },
+            {
+                q: "Dampak positif vulkanisme bagi kehidupan manusia di bidang pertanian setelah beberapa tahun pasca-erupsi adalah...",
+                options: ["Tanah di sekitar lereng menjadi subur karena kaya unsur hara dari abu vulkanik", "Tersedianya material batu dan pasir secara instan untuk bangunan", "Terbentuknya objek wisata pemandian air panas baru", "Menurunnya suhu udara global akibat debu di atmosfer", "Meningkatnya curah hujan di sekitar area pegunungan"],
+                correct: 0
+            }
+        ];
+
+        let currentQuestionIdx = 0;
+        let selectedOption = null;
+        let score = 0;
+
+        // Memuat Soal ke Layar
+        function loadQuestion() {
+            selectedOption = null;
+            const quizBody = document.getElementById('quiz-body');
+            const statusText = document.getElementById('quiz-status');
+            const nextBtn = document.getElementById('next-btn');
+            
+            // Logika Ketika Ujian Selesai
+            if (currentQuestionIdx >= questions.length) {
+                let finalScore = score * 10;
+                let kelulusan = finalScore >= 75 ? 
+                    "<span style='color:#4CAF50;'>SANGAT BAIK (TUNTAS)</span>" : 
+                    "<span style='color:#F44336;'>PERLU RELEANS (BELUM TUNTAS)</span>";
+
+                quizBody.innerHTML = `
+                    <div style="text-align: center; padding: 20px;">
+                        <h3 style="color: #FF5722; font-size: 1.4rem; margin-bottom: 10px;">Hasil Evaluasi Formatif</h3>
+                        <p style="font-size: 1.2rem; margin-bottom: 10px;">Skor Anda: <span style="color: #FF9100; font-weight: bold; font-size: 1.5rem;">${finalScore} / 100</span></p>
+                        <p style="color: #E0E0E0; font-size: 0.95rem;">Benar ${score} dari ${questions.length} soal.</p>
+                        <p style="margin-top: 15px; font-weight: bold; font-size: 1rem;">Status Ketercapaian: ${kelulusan}</p>
+                        <button class="btn" style="margin-top: 25px;" onclick="restartQuiz()">Ulangi Ujian</button>
+                    </div>
+                `;
+                statusText.innerText = "Selesai";
+                nextBtn.style.display = "none";
+                return;
+            }
+
+            nextBtn.style.display = "inline-block";
+            nextBtn.innerText = currentQuestionIdx === questions.length - 1 ? "Lihat Hasil" : "Selanjutnya";
+            nextBtn.disabled = true;
+
+            const qData = questions[currentQuestionIdx];
+            statusText.innerText = `Soal ${currentQuestionIdx + 1} dari ${questions.length}`;
+
+            let html = `<div class="question-box">${currentQuestionIdx + 1}. ${qData.q}</div>`;
+            html += `<ul class="options-list">`;
+            
+            qData.options.forEach((opt, idx) => {
+                const label = String.fromCharCode(65 + idx); // Merubah index ke huruf A, B, C, D, E
+                html += `
+                    <li class="option-item" onclick="selectOption(${idx})">
+                        <strong style="margin-right: 12px; color: #FF5722; font-size:1.1rem;">${label}.</strong> ${opt}
+                    </li>
+                `;
+            });
+            
+            html += `</ul>`;
+            quizBody.innerHTML = html;
+        }
+
+        // Memilih Jawaban & Pengecekan Interaktif Mandiri
+        function selectOption(idx) {
+            if (selectedOption !== null) return; // Mengunci agar siswa tidak menekan opsi ganda
+            
+            selectedOption = idx;
+            const items = document.querySelectorAll('.option-item');
+            const correctIdx = questions[currentQuestionIdx].correct;
+            
+            if (idx === correctIdx) {
+                items[idx].classList.add('correct');
+                score++;
+            } else {
+                items[idx].classList.add('wrong');
+                items[correctIdx].classList.add('correct'); // Sorot jawaban yang benar secara otomatis
+            }
+            
+            document.getElementById('next-btn').disabled = false;
+        }
+
+        function nextQuestion() {
+            currentQuestionIdx++;
+            loadQuestion();
+        }
+
+        function restartQuiz() {
+            currentQuestionIdx = 0;
+            score = 0;
+            loadQuestion();
+        }
+
+        // Jalankan Kuis Pertama Kali Saat Window Siap
+        window.onload = function() {
+            loadQuestion();
+        };
+    </script>
+</body>
+</html>
