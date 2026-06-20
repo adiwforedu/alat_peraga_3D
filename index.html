@@ -13,8 +13,8 @@
         }
 
         body {
-            background-color: #121212;
-            color: #E0E0E0;
+            background-color: #0A192F;
+            color: #CCD6F6;
             height: 100vh;
             display: flex;
             flex-direction: column;
@@ -23,13 +23,13 @@
 
         /* HEADER IDENTITAS */
         header {
-            background-color: #1A1A1A;
+            background-color: #172A45;
             padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 3px solid #FF5722;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            border-bottom: 2px solid #00E5FF;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .header-title h1 {
@@ -41,22 +41,22 @@
 
         .header-title p {
             font-size: 0.85rem;
-            color: #B3B3B3;
+            color: #8892B0;
             margin-top: 2px;
         }
 
         .header-meta {
             text-align: right;
             font-size: 0.85rem;
-            color: #B3B3B3;
+            color: #8892B0;
         }
 
         .header-meta span {
-            color: #FF5722;
+            color: #00E5FF;
             font-weight: bold;
         }
 
-        /* UTAMA (SPLIT SCREEN 16:9) */
+        /* STRUKTUR UTAMA (SPLIT SCREEN 16:9) */
         main {
             display: flex;
             flex: 1;
@@ -64,19 +64,19 @@
             overflow: hidden;
         }
 
-        /* SEPARUH KIRI: PANEL NAVIGASI & KONTEN */
+        /* SEPARUH KIRI: PANEL NAVIGASI & KONTEN (50%) */
         .left-panel {
             width: 50%;
             display: flex;
             flex-direction: column;
-            border-right: 2px solid #1A1A1A;
-            background-color: #1E1E1E;
+            border-right: 1px solid #172A45;
+            background-color: #0D213D;
         }
 
         .nav-tabs {
             display: flex;
-            background-color: #151515;
-            border-bottom: 1px solid #2A2A2A;
+            background-color: #0A192F;
+            border-bottom: 1px solid #172A45;
         }
 
         .tab-btn {
@@ -84,7 +84,7 @@
             padding: 15px 10px;
             background: none;
             border: none;
-            color: #888888;
+            color: #8892B0;
             font-size: 0.9rem;
             font-weight: 600;
             cursor: pointer;
@@ -95,13 +95,13 @@
 
         .tab-btn:hover {
             color: #FFFFFF;
-            background-color: #1A1A1A;
+            background-color: #172A45;
         }
 
         .tab-btn.active {
-            color: #FF5722;
-            border-bottom: 3px solid #FF5722;
-            background-color: #1E1E1E;
+            color: #00E5FF;
+            border-bottom: 3px solid #00E5FF;
+            background-color: #172A45;
         }
 
         .content-container {
@@ -122,14 +122,14 @@
         /* Gaya Konten Teks */
         h2 {
             color: #FFFFFF;
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             margin-bottom: 15px;
-            border-left: 4px solid #FF5722;
+            border-left: 4px solid #00E5FF;
             padding-left: 10px;
         }
 
         h3 {
-            color: #FFCC80;
+            color: #64FFDA;
             font-size: 1.05rem;
             margin: 20px 0 10px 0;
         }
@@ -137,7 +137,7 @@
         p, ul, ol {
             margin-bottom: 15px;
             font-size: 0.95rem;
-            color: #D5D5D5;
+            color: #A8B2D1;
         }
 
         ul, ol {
@@ -149,17 +149,17 @@
         }
 
         .highlight {
-            color: #FF9100;
+            color: #64FFDA;
             font-weight: 600;
         }
 
-        /* FORMATIF KUIS JAVASCRIPT */
+        /* FITUR EVALUASI/SOAL FORMATIF */
         .quiz-container {
-            background-color: #1A1A1A;
+            background-color: #172A45;
             padding: 20px;
             border-radius: 8px;
-            border: 1px solid #2A2A2A;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+            border: 1px solid #30475E;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .question-box {
@@ -175,8 +175,8 @@
         }
 
         .option-item {
-            background-color: #242424;
-            border: 1px solid #333333;
+            background-color: #0D213D;
+            border: 1px solid #30475E;
             padding: 12px 15px;
             border-radius: 6px;
             margin-bottom: 10px;
@@ -188,21 +188,21 @@
         }
 
         .option-item:hover {
-            border-color: #FF5722;
-            background-color: #2A2A2A;
+            border-color: #00E5FF;
+            background-color: #172A45;
         }
 
         .option-item.correct {
-            background-color: #1B5E20;
-            border-color: #4CAF50;
-            color: #E8F5E9;
+            background-color: #0F342E;
+            border-color: #64FFDA;
+            color: #64FFDA;
             font-weight: bold;
         }
 
         .option-item.wrong {
-            background-color: #B71C1C;
-            border-color: #F44336;
-            color: #FFEBEE;
+            background-color: #3A1C24;
+            border-color: #FF5376;
+            color: #FF5376;
         }
 
         .quiz-nav {
@@ -214,8 +214,8 @@
 
         .btn {
             padding: 10px 20px;
-            background-color: #FF5722;
-            color: #FFFFFF;
+            background-color: #00E5FF;
+            color: #0A192F;
             border: none;
             border-radius: 4px;
             font-weight: 700;
@@ -224,23 +224,23 @@
         }
 
         .btn:hover {
-            background-color: #FF7043;
+            background-color: #64FFDA;
         }
 
         .btn:disabled {
-            background-color: #444444;
-            color: #888888;
+            background-color: #30475E;
+            color: #8892B0;
             cursor: not-allowed;
         }
 
-        /* SEPARUH KANAN: FULL EMBED 3D/AR */
+        /* SEPARUH KANAN: SIMULASI 3D / AR (50% FULL) */
         .right-panel {
             width: 50%;
             height: 100%;
             background-color: #000000;
             position: relative;
-            border-left: 2px solid #FF5722;
-            box-shadow: -4px 0 15px rgba(255, 87, 34, 0.15);
+            border-left: 2px solid #00E5FF;
+            box-shadow: -5px 0 25px rgba(0, 229, 255, 0.15);
         }
 
         .iframe-container {
@@ -256,27 +256,27 @@
 
         /* FOOTER */
         footer {
-            background-color: #121212;
+            background-color: #0A192F;
             padding: 12px 20px;
             font-size: 0.8rem;
-            color: #888888;
+            color: #8892B0;
             text-align: center;
-            border-top: 1px solid #1A1A1A;
+            border-top: 1px solid #172A45;
         }
 
-        /* Scrollbar Kostumisasi Kiri */
+        /* Kustomisasi Scrollbar Panel Kiri */
         .content-container::-webkit-scrollbar {
             width: 6px;
         }
         .content-container::-webkit-scrollbar-track {
-            background: #1E1E1E;
+            background: #0D213D;
         }
         .content-container::-webkit-scrollbar-thumb {
-            background: #333333;
+            background: #172A45;
             border-radius: 3px;
         }
         .content-container::-webkit-scrollbar-thumb:hover {
-            background: #FF5722;
+            background: #00E5FF;
         }
     </style>
 </head>
@@ -293,7 +293,6 @@
     </header>
 
     <main>
-        <!-- PANEL KIRI (NAVIGASI & KONTEN) -->
         <div class="left-panel">
             <nav class="nav-tabs">
                 <button class="tab-btn active" onclick="openTab('tujuan')">Tujuan Pembelajaran</button>
@@ -302,56 +301,52 @@
             </nav>
 
             <div class="content-container">
-                <!-- TAB 1: TUJUAN -->
                 <div id="tujuan" class="tab-content active">
                     <h2>Tujuan Pembelajaran</h2>
-                    <p>Melalui media interaktif ini, diharapkan peserta didik Fase E mampu:</p>
+                    <p>Melalui media pembelajaran interaktif berbasis web ini, diharapkan peserta didik Fase E mampu:</p>
                     <ol>
                         <li>Memahami konsep dasar <span class="highlight">vulkanisme</span> serta karakteristik pergerakan magma dengan benar.</li>
-                        <li>Mengidentifikasi ciri khas dan membedakan 3 bentuk utama gunung berapi (<span class="highlight">Maar, Perisai, dan Strato</span>).</li>
-                        <li>Menganalisis dampak fenomena erupsi terhadap lingkungan sekitar.</li>
-                        <li>Menerapkan prinsip <span class="highlight">mitigasi bencana</span> (pra, saat, dan pasca-erupsi) demi keselamatan jiwa.</li>
+                        <li>Mengidentifikasi ciri khas dan membedakan bentuk-bentuk utama gunung berapi (<span class="highlight">Strato, Maar, dan Perisai</span>).</li>
+                        <li>Menganalisis dampak dari erupsi gunung berapi baik dampak positif maupun negatif terhadap kehidupan manusia.</li>
+                        <li>Menentukan tindakan <span class="highlight">mitigasi bencana</span> yang tepat pada tahap pra-erupsi, saat erupsi, dan pasca-erupsi.</li>
                     </ol>
-                    <div style="margin-top: 35px; border: 1px dashed #FF5722; padding: 15px; border-radius: 6px; background-color: rgba(255,87,34,0.05);">
-                        <p style="margin-bottom: 0; font-style: italic; color: #FFCC80; font-size: 0.85rem;">
-                            <strong>Petunjuk Interaksi:</strong> Gunakan panel simulasi di sebelah kanan untuk mengeksplorasi gunung api secara 3D/AR. Model dapat digeser, diputar, dan diperbesar untuk mengamati morfologinya secara nyata.
+                    <div style="margin-top: 30px; border: 1px dashed #00E5FF; padding: 15px; border-radius: 6px; background-color: rgba(0, 229, 255, 0.03);">
+                        <p style="margin-bottom: 0; font-style: italic; color: #64FFDA; font-size: 0.85rem;">
+                            <strong>Petunjuk Eksplorasi:</strong> Gunakan panel 3D/AR di sebelah kanan halaman untuk berinteraksi langsung dengan simulasi gunung berapi. Model dapat digeser, diputar, dan diperbesar.
                         </p>
                     </div>
                 </div>
 
-                <!-- TAB 2: MATERI -->
                 <div id="materi" class="tab-content">
                     <h2>Uraian Materi: Gunung Berapi</h2>
                     
                     <h3>A. Pengertian Vulkanisme</h3>
-                    <p>Vulkanisme merupakan peristiwa naiknya magma dari dalam litosfer menuju ke permukaan bumi melalui celah, patahan, atau pipa kepundan (diatrema). Tenaga dorong ini dipicu oleh akumulasi gas bertekanan tinggi di dalam dapur magma.</p>
+                    <p>Vulkanisme adalah semua gejala alam yang berkaitan dengan penyusupan magma ke dalam atau ke permukaan bumi melalui retakan, patahan, atau pipa kepundan (diatrema). Gerakan ini dipicu oleh energi gas bertekanan tinggi dari dalam dapur magma.</p>
                     
                     <h3>B. Bentuk-Bentuk Gunung Berapi</h3>
-                    <p>Morfologi gunung api sangat ditentukan oleh kekentalan lava dan kekuatan letusannya:</p>
+                    <p>Morfologi gunung api sangat ditentukan oleh sifat letusan dan kekentalan lava yang dikeluarkan:</p>
                     <ul>
-                        <li><strong>1. Gunung Api Maar (Kawah):</strong> Terbentuk dari sebuah erupsi eksplosif tunggal yang sangat dahsyat, menyisakan lubang kawah besar yang sering kali terisi oleh air (danau kawah). Contoh: Danau Klakah di Lumajang.</li>
-                        <li><strong>2. Gunung Api Perisai (Shield):</strong> Terbentuk dari efusi lava yang sangat encer bertekanan rendah, menyebar luas hingga membentuk lereng sangat landai menyerupai tameng. Contoh: Gunung Mauna Loa di Hawaii.</li>
-                        <li><strong>3. Gunung Api Strato (Kerucut):</strong> Hasil kombinasi erupsi lelehan (efusif) dan ledakan (eksplosif) yang terjadi secara bergantian secara terus menerus, membentuk struktur berlapis-lapis. Mayoritas gunung api di Indonesia bertipe strato (seperti Merapi, Gede, dan Galunggung).</li>
+                        <li><strong>1. Gunung Api Strato (Kerucut):</strong> Terbentuk akibat kombinasi letusan eksplosif (ledakan) dan efusif (lelehan) yang terjadi bergantian. Bentuknya berlapis-lapis dan menyerupai kerucut. Tipe ini mendominasi gunung berapi di Indonesia seperti Gunung Merapi dan Gunung Galunggung.</li>
+                        <li><strong>2. Gunung Api Maar (Kawah):</strong> Terbentuk akibat satu kali letusan eksplosif yang sangat kuat sehingga merusak puncak gunung dan meninggalkan lubang kawah besar (sering kali terisi air menjadi danau kawah). Contoh: Danau Klakah di Lumajang.</li>
+                        <li><strong>3. Gunung Api Perisai (Shield):</strong> Terbentuk dari aliran lava yang sangat encer dengan tekanan gas rendah. Lava mengalir jauh sebelum membeku sehingga membentuk lereng yang sangat landai menyerupai perisai. Contoh: Gunung Mauna Loa di Hawaii.</li>
                     </ul>
 
-                    <h3>C. Langkah Mitigasi Bencana Erupsi</h3>
-                    <p>Langkah preventif wajib dipahami guna meminimalisir risiko jatuhnya korban:</p>
+                    <h3>C. Mitigasi Bencana Erupsi</h3>
+                    <p>Langkah preventif untuk mengurangi risiko bencana meliputi:</p>
                     <ul>
-                        <li><strong>Pra-Erupsi:</strong> Mematuhi sistem peringatan dini, mengamati status level aktivitas (Normal, Waspada, Siaga, Awas), serta menyiapkan tas evakuasi darurat.</li>
-                        <li><strong>Saat Erupsi:</strong> Menghindari kawasan radius bahaya, mengenakan masker/kacamata pelindung debu vulkanik, dan tidak berada di lembah sungai demi menghindari aliran lahar.</li>
-                        <li><strong>Pasca-Erupsi:</strong> Selalu membersihkan sisa abu di atap rumah agar struktur bangunan tidak roboh akibat beban material.</li>
+                        <li><strong>Pra-Erupsi:</strong> Memantau aktivitas gunung berapi di pos pengamatan, mencermati status tingkatan (Normal, Waspada, Siaga, Awas), dan menyiapkan tas darurat.</li>
+                        <li><strong>Saat Erupsi:</strong> Hindari lembah sungai (menghindari lahar), kenakan masker dan kacamata untuk berlindung dari abu vulkanik, serta ikuti jalur evakuasi resmi.</li>
+                        <li><strong>Pasca-Erupsi:</strong> Bersihkan atap rumah dari abu vulkanik agar tidak runtuh, dan pastikan sumber air bersih aman dari kontaminasi.</li>
                     </ul>
                 </div>
 
-                <!-- TAB 3: EVALUASI (APLIKATIF) -->
                 <div id="evaluasi" class="tab-content">
                     <h2>Evaluasi Formatif Mandiri</h2>
                     <div class="quiz-container">
                         <div id="quiz-body">
-                            <!-- Soal dinamis dimuat via JavaScript -->
-                        </div>
+                            </div>
                         <div class="quiz-nav">
-                            <span id="quiz-status" style="font-size: 0.9rem; color: #888888;">Menyiapkan kuis...</span>
+                            <span id="quiz-status" style="font-size: 0.9rem; color: #8892B0;">Memuat kuis...</span>
                             <button id="next-btn" class="btn" onclick="nextQuestion()">Selanjutnya</button>
                         </div>
                     </div>
@@ -359,7 +354,6 @@
             </div>
         </div>
 
-        <!-- PANEL KANAN (FULL EMBED IFRAME ASSEMBLR) -->
         <div class="right-panel">
             <div class="iframe-container">
                 <iframe src="https://asblr.com/vrSMRH2" allowfullscreen allow="xr-spatial-tracking; gyroscope; accelerometer;"></iframe>
@@ -372,7 +366,7 @@
     </footer>
 
     <script>
-        // Navigasi Tab Sistem
+        // Logika Perpindahan Tab Menu
         function openTab(tabId) {
             const contents = document.querySelectorAll('.tab-content');
             const tabs = document.querySelectorAll('.tab-btn');
@@ -384,7 +378,7 @@
             event.currentTarget.classList.add('active');
         }
 
-        // Data 10 Soal Formatif Pilihan Ganda (A-E)
+        // Data 10 Soal Formatif Pilihan Ganda (Opsi A - E)
         const questions = [
             {
                 q: "Magma yang berhasil keluar dan mengalir di permukaan bumi disebut...",
@@ -442,27 +436,27 @@
         let selectedOption = null;
         let score = 0;
 
-        // Memuat Soal ke Layar
+        // Memuat Soal Secara Interaktif
         function loadQuestion() {
             selectedOption = null;
             const quizBody = document.getElementById('quiz-body');
             const statusText = document.getElementById('quiz-status');
             const nextBtn = document.getElementById('next-btn');
             
-            // Logika Ketika Ujian Selesai
+            // Logika Selesai Kuis
             if (currentQuestionIdx >= questions.length) {
                 let finalScore = score * 10;
-                let kelulusan = finalScore >= 75 ? 
-                    "<span style='color:#4CAF50;'>SANGAT BAIK (TUNTAS)</span>" : 
-                    "<span style='color:#F44336;'>PERLU RELEANS (BELUM TUNTAS)</span>";
+                let statusKelulusan = finalScore >= 75 ? 
+                    "<span style='color:#64FFDA;'>SANGAT BAIK (TUNTAS)</span>" : 
+                    "<span style='color:#FF5376;'>BELUM TUNTAS (SILAKAN ULANGI KEMBALI MATERI)</span>";
 
                 quizBody.innerHTML = `
-                    <div style="text-align: center; padding: 20px;">
-                        <h3 style="color: #FF5722; font-size: 1.4rem; margin-bottom: 10px;">Hasil Evaluasi Formatif</h3>
-                        <p style="font-size: 1.2rem; margin-bottom: 10px;">Skor Anda: <span style="color: #FF9100; font-weight: bold; font-size: 1.5rem;">${finalScore} / 100</span></p>
-                        <p style="color: #E0E0E0; font-size: 0.95rem;">Benar ${score} dari ${questions.length} soal.</p>
-                        <p style="margin-top: 15px; font-weight: bold; font-size: 1rem;">Status Ketercapaian: ${kelulusan}</p>
-                        <button class="btn" style="margin-top: 25px;" onclick="restartQuiz()">Ulangi Ujian</button>
+                    <div style="text-align: center; padding: 15px 0;">
+                        <h3 style="color: #00E5FF; font-size: 1.3rem; margin-bottom: 10px;">Hasil Evaluasi Formatif</h3>
+                        <p style="font-size: 1.1rem; margin-bottom: 10px;">Skor Akhir Anda: <span style="color: #64FFDA; font-weight: bold; font-size: 1.4rem;">${finalScore} / 100</span></p>
+                        <p style="color: #8892B0; font-size: 0.9rem;">Menjawab benar ${score} dari ${questions.length} soal.</p>
+                        <p style="margin-top: 15px; font-weight: bold; font-size: 0.95rem;">Status Ketercapaian: ${statusKelulusan}</p>
+                        <button class="btn" style="margin-top: 25px;" onclick="restartQuiz()">Ulangi Evaluasi</button>
                     </div>
                 `;
                 statusText.innerText = "Selesai";
@@ -481,10 +475,10 @@
             html += `<ul class="options-list">`;
             
             qData.options.forEach((opt, idx) => {
-                const label = String.fromCharCode(65 + idx); // Merubah index ke huruf A, B, C, D, E
+                const label = String.fromCharCode(65 + idx); // Merubah index 0-4 ke A-E
                 html += `
                     <li class="option-item" onclick="selectOption(${idx})">
-                        <strong style="margin-right: 12px; color: #FF5722; font-size:1.1rem;">${label}.</strong> ${opt}
+                        <strong style="margin-right: 12px; color: #00E5FF; font-size:1.05rem;">${label}.</strong> ${opt}
                     </li>
                 `;
             });
@@ -493,9 +487,9 @@
             quizBody.innerHTML = html;
         }
 
-        // Memilih Jawaban & Pengecekan Interaktif Mandiri
+        // Memvalidasi Jawaban Siswa
         function selectOption(idx) {
-            if (selectedOption !== null) return; // Mengunci agar siswa tidak menekan opsi ganda
+            if (selectedOption !== null) return; // Mengunci opsi jika sudah dipilih
             
             selectedOption = idx;
             const items = document.querySelectorAll('.option-item');
@@ -523,7 +517,7 @@
             loadQuestion();
         }
 
-        // Jalankan Kuis Pertama Kali Saat Window Siap
+        // Menjalankan inisialisasi pertama kuis
         window.onload = function() {
             loadQuestion();
         };
